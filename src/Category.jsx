@@ -19,14 +19,15 @@ function Category() {
     console.log(categoryID)
     return (
       <>
-      <h1>Trivia Categories</h1>
+    <h1>Trivia Categories</h1>
+      {categoryID ? <Quiz categoryID={categoryID} /> : 
         <div>
             {categories.map((category) => (
                 <ul key={category.id}>
                     <button onClick={() => handleCategoryID(category.id)}>{category.name}</button>
                 </ul>
             ))}
-        </div>
+        </div>}
       </>
     )
   }
