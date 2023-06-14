@@ -3,22 +3,25 @@ import './App.css'
 import Category from './Category'
 import Quiz from './quiz'
 
-function App() {
+// function App() {
 
-  return (
-    <>
-      <Quiz />
-    </>
-  )
-}
-// function App({categories}) {
-//     const[selectedCategory, setSelectedCategories] = useState('')
-//       if (selectedCategory) {return <Quiz />}
 //   return (
 //     <>
-//     {selectedCategory ? <Quiz /> : <Category />}
+//       <Category />
 //     </>
 //   )
 // }
+function App({categoryID}) {
+    const[Category, Quiz] = useState('2')
+  return (
+    <>
+    {categoryID ? (
+      <Category />
+    )  : ( 
+      <Quiz />)
+    }
+    </>
+  )
+}
 
 export default App

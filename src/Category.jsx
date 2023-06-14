@@ -16,7 +16,7 @@ function Category() {
         setCategoryID(id)
     }
 
-    // console.log(categoryID)
+    console.log(categoryID)
     return (
       <>
       <h1>Trivia Categories</h1>
