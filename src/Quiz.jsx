@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Category from './Category'
+import he from 'he'
 
 function Quiz({categoryID}) {
     const [questions, setQuestions] = useState([])
@@ -11,6 +12,7 @@ function Quiz({categoryID}) {
     const [score, setScore] = useState(0)
     const [finalScore, setFinalScore] = useState()
 
+    
     useEffect(() => {
         axios.get(questionURL).then((response) => setQuestions(response.data.results))}, [categoryID])
 
