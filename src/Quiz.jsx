@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Category from './Category'
 import he from 'he'
+import arrayShuffle from "Array-shuffle"
 
 function Quiz({categoryID}) {
     const [questions, setQuestions] = useState([])
@@ -41,17 +42,19 @@ function Quiz({categoryID}) {
       <h1>Quiz</h1>
     <div className='slideContainer'>
       {questions.length > 0 ? (  
-        <div className='questionSlides'>
-          <h2 className='title'>{questions[currentQuestion].question}</h2>
-          <div className='answerButtons'>
-              <button className={color} onClick={() => handleAnswer(questions[currentQuestion].correct_answer)}>
-                {questions[currentQuestion].correct_answer}</button>
-            <div className='answerButtons'>
-              <button className={color} onClick={() => setColor('red')}>{questions[currentQuestion].incorrect_answers[0]}</button>
-              <button className={color} onClick={() => setColor('red')}>{questions[currentQuestion].incorrect_answers[1]}</button>
-              <button className={color} onClick={() => setColor('red')}>{questions[currentQuestion].incorrect_answers[2]}</button>
-            </div>
-          </div>
+    <div className='questionSlides'>
+      <h2 className='title'>{he.decode(questions[currentQuestion].question)}</h2>
+
+      <div className='answerButtons'>
+        {arrayShuffle([
+          ...questions[currentQuestion].incorrect_answers,
+          questions[currentQuestion].correct_answer]).map((answer, index) => (
+          <button key={index} className={color}
+          onClick={() => handleAnswer(answer)}
+          >{he.decode(answer)}
+          </button>
+        ))}
+        </div>
         </div>
         ) : (<p>sorry no questions</p>)
       }
