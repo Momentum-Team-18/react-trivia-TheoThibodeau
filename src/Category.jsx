@@ -20,6 +20,7 @@ function Category() {
     return (
       <>
     <h1>Trivia Categories</h1>
+    {/* <h3>Choose Your 10 Question Quiz From the Categories Below:</h3> */}
       {categoryID ? <Quiz categoryID={categoryID} /> : 
         <div>
             {categories.map((category) => (

@@ -33,7 +33,7 @@ function Quiz({categoryID}) {
     };
 
     const handleGoBack = () => {
-      setCurrentQuestion(0)
+      setQuestions(<Category />)
     }
 
     console.log(questions)
@@ -59,11 +59,13 @@ function Quiz({categoryID}) {
         ) : (<p>sorry no questions</p>)
       }
         <div>
-          <button className="nextQuestion" onClick={handleNextQuestion}>Next Question</button>
+          <button className="nextQuestion" onClick={handleNextQuestion} 
+          disabled={currentQuestion === questions.length - 1}>Next Question</button>
+          <button className="endQuiz" onClick={handleGoBack}>End Quiz</button>
         </div>
         {color === 'green' ? ('Correct!') : color === 'red' ? (`Incorrect, the correct answer is: 
         ${questions[currentQuestion].correct_answer}`) : ('')}
-        <p>Your Score: {score}/10</p>
+        <p>Your Score: {score} / {currentQuestion + 1}</p>
     </div>
     {/* <div>
       {currentQuestion === question.length[9] (
@@ -82,6 +84,4 @@ function Quiz({categoryID}) {
   // map the buttons:
   //   so i can fix styling
   //   randomize the buttons
-  // goback button
-  // the words are still messed up
-    
+  // goback button    
