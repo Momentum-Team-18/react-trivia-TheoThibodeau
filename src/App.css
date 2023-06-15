@@ -5,14 +5,29 @@
   text-align: center;
 }
 
-.answerButton {
+.slideContainer {
+  border: 1px white;
+  margin: 50px;
+}
 
+.answerButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.green{
+  background-color: green;
 }
 
 .red {
   background-color: red;
+  width: 800px;
+  height: 40px;
 }
 
-.yellow{
-  background-color: yellow;
+.nextQuestion {
+  margin: 20px;
+  background-color: green;
 }
